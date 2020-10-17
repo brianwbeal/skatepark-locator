@@ -4,6 +4,8 @@
 
 ## Overview
 
+<img src="./skatepark-screencap.png">
+
 App uses the navigator's <code>getCurrentPosition()</code> method or the <code>Maps Geocoding API</code> to compare a relative position against those of the skateparks in the data set <code>locations</code>.
 
 <code>scripts.js</code> has data object for locations, which are referenced when the app is loaded or when a search is submitted.
