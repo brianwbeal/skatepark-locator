@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skatepark Locator</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    
+    <div class="app">
+        <div class="app-flex">
+            <div class="controls collapsed">
+                <div class="search">
+                    <button id="controlsDrawerToggle"><i class="fas fa-angle-down"></i></button>
+                    <form id="searchForm">
+                        <input type="text" placeholder="Enter zip code..." name="searchInput" id="searchInput">
+                        <button type="submit" id="searchSubmit"><i class="fas fa-angle-right"></i></button>
+                    </form>
+                </div>
+                <div class="locations">
+                    <div class="locations-flex">
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=[YOUR API KEY]&callback=initMap" async defer></script>
+</body>
+</html>

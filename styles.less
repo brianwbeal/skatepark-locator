@@ -1,0 +1,228 @@
+// out: ./styles.css
+
+// variables
+
+// layout breakpoints
+@xs-max: 767px;
+@sm-min: 768px;
+@sm-max: 991px;
+@md-min: 992px;
+@md-max: 1199px;
+@lg-min: 1200px;
+@lg-max: 1499px;
+@xl-min: 1500px;
+
+// neumorphism elements
+@search-bg: gainsboro;
+@nm-bg: gainsboro;
+@border-radius: 8px;
+@nm-shadow: 6px 6px 16px 0 rgba(0, 0, 0, 0.2), -6px -6px 16px 0 rgba(255, 255, 255, 0.8);
+@nm-shadow-inset: inset 4px 4px 8px 0 rgba(0,0,0,0.2), inset -4px -4px 8px 0 rgba(255,255,255,0.8);
+
+// reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+// app styles
+.app {
+    width: 100%;
+    position: fixed;
+
+    &.expanded {
+        @media (max-width: @xs-max) {
+            position: relative;
+        }
+    }
+    
+    &-flex {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+}
+
+.controls {
+    transition: 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    border-radius: @border-radius;
+    background: @nm-bg;
+    @media (max-width: @xs-max) {
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        right: 0;
+        top: 50px;
+        bottom: calc(100vh + 50px);
+        height: 100vh;
+        
+        >.search {
+            #controlsDrawerToggle {
+                >i {
+                    transform: rotate(180deg);
+                    transition: .5s ease-in-out;
+                }
+            }
+        }
+    }
+    @media (min-width: @sm-min) {
+        position: relative;
+        flex: 1 0 25%;
+    }
+    
+    &.collapsed {
+        @media (max-width: @xs-max) {
+            top: calc(100vh - 50px);
+
+            >.search {
+                #controlsDrawerToggle {
+                    >i {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+        }
+    }    
+}
+
+.map-container {
+    flex: 1 0 75%;
+}
+
+.search {
+    padding: 0 16px;
+    background: @search-bg;
+    flex: 1 0 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    @media (max-width: @xs-max) {
+        border-top-left-radius: @border-radius;
+        border-top-right-radius: @border-radius;
+    }
+}
+
+#controlsDrawerToggle {
+    border: none;
+    width: 100%;
+    background: transparent;
+    // margin-bottom: 16px;
+    @media (min-width: @sm-min) {
+        display: none;
+    }
+
+    >i {
+        line-height: 40px;
+        font-size: 30px;
+    }
+}
+
+#searchForm {
+    margin: auto;
+    width: 100%;
+    background: @search-bg;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+#searchInput {
+    flex: 1 0 auto;
+    border: none;
+    background: @search-bg;
+    border-radius: @border-radius;
+    box-shadow: @nm-shadow-inset;
+    line-height: 40px;
+    padding: 0 16px;
+}
+
+#searchSubmit {
+    flex: 0 0 auto;
+    border: none;
+    background: @search-bg;
+    border-radius: @border-radius;
+    box-shadow: @nm-shadow;
+    width: 40px;
+    margin-left: 8px;
+
+    >i {
+        font-size: 20px;
+    }
+}
+
+.locations {
+    flex: 1 0 75%;
+    background: @nm-bg;
+    padding: 16px;
+    border-radius: @border-radius;
+
+    &-flex {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        @media (min-width: @sm-min) {
+            padding: 24px;
+            height: 70vh;
+            overflow-y: scroll;
+        }
+    }
+}
+
+.location {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 16px;
+    box-shadow: @nm-shadow;
+    border-radius: @border-radius;
+
+    >h3 {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        line-height: 60px;
+        margin-right: auto;
+    }
+
+    >p {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        color: black;
+        line-height: 60px;
+        margin-right: 16px;
+    }
+
+    &-button {
+        border: none;
+        background: transparent;
+        box-shadow: @nm-shadow;
+        border-radius: @border-radius;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        color: black;
+        line-height: 40px;
+        width: 40px;
+        padding: 0 8px;
+    }
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
