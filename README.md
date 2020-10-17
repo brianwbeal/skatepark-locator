@@ -1,6 +1,6 @@
 # Skatepark Locator App
 
-> web application that returns sorted list of skate park locations to user based on user's current location or by search
+> Web application using Google Maps API to return sorted list of skate park locations to user based on user's current location or by geocoded search
 
 ## Overview
 
